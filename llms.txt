@@ -1,0 +1,17 @@
+# BK REALTOR
+
+> BK REALTOR is a demo Kuala Lumpur real estate analytics and property advisory website led by BK Han, focused on KLCC, Bukit Bintang, and Mont Kiara.
+
+## Summary
+- Brand: BK REALTOR
+- Owner: BK Han
+- Location: KLCC area, Kuala Lumpur, Malaysia
+- Currency: Malaysian Ringgit (RM)
+- Sample Contact: hello@bkrealtor.example | +60 3-2100 0000
+- Notice: Demo site; listings and figures are sample data.
+
+## Sections
+- Overview (#overview): Interactive neighbourhood map filter, RM valuation callout, location details, and community gauge.
+- Featured Listings (#listings): Sample Kuala Lumpur condominiums, serviced suites, and penthouses across KLCC, Bukit Bintang, and Mont Kiara.
+- Market Pulse (#analytics): Indicative sample median prices, PSF, and gross yields by Kuala Lumpur neighbourhood, plus agency Q&A.
+- Contact (#contact): Principal realtor details for BK Han and a demo viewing enquiry form.

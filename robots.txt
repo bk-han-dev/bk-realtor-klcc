@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://bk-han-dev.github.io/bk-realtor-klcc/sitemap.xml

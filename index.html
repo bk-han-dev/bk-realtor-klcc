@@ -1,0 +1,944 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%230b875b%27/%3E%3Ccircle cx=%2711%27 cy=%2711%27 r=%273.2%27 fill=%27%23fff%27/%3E%3Ccircle cx=%2721%27 cy=%2711%27 r=%273.2%27 fill=%27%23fff%27/%3E%3Ccircle cx=%2711%27 cy=%2721%27 r=%273.2%27 fill=%27%23fff%27/%3E%3Ccircle cx=%2721%27 cy=%2721%27 r=%273.2%27 fill=%27%23fff%27/%3E%3C/svg%3E" />
+    <title>BK REALTOR | KLCC &amp; Kuala Lumpur Property Analytics</title>
+    <meta
+      name="description"
+      content="BK REALTOR by BK Han: Kuala Lumpur property analytics, KLCC luxury residences, Bukit Bintang suites, and Mont Kiara homes in RM."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="BK REALTOR" />
+    <meta property="og:title" content="BK REALTOR | KLCC &amp; Kuala Lumpur Property Analytics" />
+    <meta
+      property="og:description"
+      content="Interactive property dashboard and sample Kuala Lumpur listings across KLCC, Bukit Bintang, and Mont Kiara."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "RealEstateAgent",
+            "@id": "#bk-realtor",
+            "name": "BK REALTOR",
+            "founder": {
+              "@type": "Person",
+              "name": "BK Han"
+            },
+            "areaServed": [
+              "KLCC, Kuala Lumpur",
+              "Bukit Bintang, Kuala Lumpur",
+              "Mont Kiara, Kuala Lumpur"
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Jalan Binjai, KLCC",
+              "addressLocality": "Kuala Lumpur",
+              "postalCode": "50450",
+              "addressCountry": "MY"
+            },
+            "email": "hello@bkrealtor.example",
+            "telephone": "+60 3-2100 0000"
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Who is BK REALTOR?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "BK REALTOR is a Kuala Lumpur real estate advisory led by BK Han, focused on residential and investment properties around KLCC, Bukit Bintang, and Mont Kiara."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Which Kuala Lumpur neighbourhoods are covered?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sample coverage spans KLCC, Bukit Bintang, and Mont Kiara, tracking asking prices in Malaysian Ringgit (RM), building age, and tenant demand."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link visually-hidden" href="#overview">Skip to main content</a>
+
+    <div class="app-shell">
+      <!-- Left Rail Sidebar -->
+      <aside class="sidebar" aria-label="Primary navigation">
+        <div class="sidebar-top">
+          <a class="brand-mark" href="#overview" aria-label="BK REALTOR home">
+            <div class="brand-dots" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <span class="brand-short">BK</span>
+          </a>
+
+          <nav class="nav-stack" aria-label="Dashboard sections">
+            <div class="nav-item-wrap">
+              <span class="nav-indicator" aria-hidden="true"></span>
+              <a
+                class="nav-btn is-active"
+                href="#overview"
+                data-nav="overview"
+                aria-label="Dashboard overview"
+                title="Overview"
+              >
+                <svg
+                  aria-hidden="true"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+                  <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                </svg>
+              </a>
+            </div>
+
+            <div class="nav-item-wrap">
+              <button
+                type="button"
+                class="nav-btn"
+                id="openAddModalBtn"
+                aria-label="Add demo property listing"
+                title="Add Property"
+              >
+                <span class="nav-plus-ring" aria-hidden="true">
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M12 5v14" />
+                    <path d="M5 12h14" />
+                  </svg>
+                </span>
+              </button>
+            </div>
+
+            <div class="nav-item-wrap">
+              <a
+                class="nav-btn"
+                href="#listings"
+                data-nav="listings"
+                aria-label="Featured KLCC and Kuala Lumpur listings"
+                title="Featured Listings"
+              >
+                <svg
+                  aria-hidden="true"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect width="20" height="14" x="2" y="3" rx="2" />
+                  <line x1="8" x2="16" y1="21" y2="21" />
+                  <line x1="12" x2="12" y1="17" y2="21" />
+                </svg>
+              </a>
+            </div>
+
+            <div class="nav-item-wrap">
+              <a
+                class="nav-btn"
+                href="#analytics"
+                data-nav="analytics"
+                aria-label="Kuala Lumpur market pulse"
+                title="Market Pulse"
+              >
+                <svg
+                  aria-hidden="true"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" />
+                  <path d="M14 2v5a1 1 0 0 0 1 1h5" />
+                  <path d="M10 9H8" />
+                  <path d="M16 13H8" />
+                  <path d="M16 17H8" />
+                </svg>
+              </a>
+            </div>
+          </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+          <a
+            class="nav-btn hide-sm"
+            href="#contact"
+            data-nav="contact"
+            aria-label="Book a viewing with BK Han"
+            title="Book Viewing"
+          >
+            <svg
+              aria-hidden="true"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
+              <path d="M13 5v2" />
+              <path d="M13 17v2" />
+              <path d="M13 11v2" />
+            </svg>
+          </a>
+          <a
+            class="nav-btn hide-sm"
+            href="#analytics"
+            aria-label="Neighbourhood benchmarks"
+            title="Benchmarks"
+          >
+            <svg
+              aria-hidden="true"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+          </a>
+          <a
+            href="#contact"
+            class="owner-badge"
+            title="BK Han — BK REALTOR"
+            aria-label="Contact BK Han, Principal Realtor"
+          >
+            BK
+          </a>
+        </div>
+      </aside>
+
+      <!-- Main Workspace -->
+      <main class="main-content">
+        <!-- Brand Header Strip -->
+        <header class="topbar-meta">
+          <div class="topbar-brand">
+            <h1 class="topbar-title">BK REALTOR</h1>
+            <span class="topbar-location">KLCC, Kuala Lumpur • BK Han</span>
+          </div>
+          <div class="topbar-actions">
+            <a class="pill-link" href="#listings">Listings</a>
+            <a class="pill-link" href="#analytics">Market Pulse</a>
+            <a class="pill-link pill-link-primary" href="#contact">Enquire</a>
+          </div>
+        </header>
+
+        <!-- Hero Dashboard Overview -->
+        <section class="overview-section" id="overview" aria-label="Property analytics overview">
+          <!-- Interactive Map Hero -->
+          <div class="map-card">
+            <img
+              class="map-bg"
+              src="./assets/images/world-map.jpg"
+              alt="Monochrome regional property analytics map centered on Kuala Lumpur"
+              width="2400"
+              height="1594"
+              fetchpriority="high"
+            />
+            <div class="map-scrim" aria-hidden="true"></div>
+
+            <!-- Top Filter Bar -->
+            <div class="filter-bar" role="region" aria-label="Property filters">
+              <label class="search-box" aria-label="Search Kuala Lumpur properties">
+                <svg
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#9ca3af"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m21 21-4.34-4.34" />
+                  <circle cx="11" cy="11" r="8" />
+                </svg>
+                <input
+                  id="searchInput"
+                  type="search"
+                  placeholder="Search KLCC, Bukit Bintang, Mont Kiara..."
+                  autocomplete="off"
+                />
+              </label>
+
+              <div class="filter-dropdown" data-dropdown="type">
+                <button
+                  type="button"
+                  class="filter-trigger"
+                  aria-expanded="false"
+                  aria-haspopup="listbox"
+                >
+                  <span class="trigger-label">Property Type</span>
+                  <svg
+                    aria-hidden="true"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#9ca3af"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div class="filter-menu" role="listbox" hidden>
+                  <button type="button" class="filter-option" role="option" data-value="All" aria-selected="true">All Types</button>
+                  <button type="button" class="filter-option" role="option" data-value="Condominium">Condominium</button>
+                  <button type="button" class="filter-option" role="option" data-value="Serviced Suite">Serviced Suite</button>
+                  <button type="button" class="filter-option" role="option" data-value="Penthouse">Penthouse</button>
+                </div>
+              </div>
+
+              <div class="filter-dropdown" data-dropdown="area">
+                <button
+                  type="button"
+                  class="filter-trigger"
+                  aria-expanded="false"
+                  aria-haspopup="listbox"
+                >
+                  <span class="trigger-label">KLCC</span>
+                  <svg
+                    aria-hidden="true"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#9ca3af"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div class="filter-menu" role="listbox" hidden>
+                  <button type="button" class="filter-option" role="option" data-value="All">All KL Areas</button>
+                  <button type="button" class="filter-option" role="option" data-value="KLCC" aria-selected="true">KLCC</button>
+                  <button type="button" class="filter-option" role="option" data-value="Bukit Bintang">Bukit Bintang</button>
+                  <button type="button" class="filter-option" role="option" data-value="Mont Kiara">Mont Kiara</button>
+                </div>
+              </div>
+
+              <div class="filter-dropdown" data-dropdown="city">
+                <button
+                  type="button"
+                  class="filter-trigger"
+                  aria-expanded="false"
+                  aria-haspopup="listbox"
+                >
+                  <span class="trigger-label">Kuala Lumpur</span>
+                  <svg
+                    aria-hidden="true"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#9ca3af"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div class="filter-menu" role="listbox" hidden>
+                  <button type="button" class="filter-option" role="option" data-value="Kuala Lumpur" aria-selected="true">Kuala Lumpur</button>
+                  <button type="button" class="filter-option" role="option" data-value="KL City Centre">KL City Centre</button>
+                </div>
+              </div>
+
+              <div class="filter-dropdown" data-dropdown="tenure">
+                <button
+                  type="button"
+                  class="filter-trigger"
+                  aria-expanded="false"
+                  aria-haspopup="listbox"
+                >
+                  <span class="trigger-label">Freehold</span>
+                  <svg
+                    aria-hidden="true"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#9ca3af"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div class="filter-menu" role="listbox" hidden>
+                  <button type="button" class="filter-option" role="option" data-value="All">Any Tenure</button>
+                  <button type="button" class="filter-option" role="option" data-value="Freehold" aria-selected="true">Freehold</button>
+                  <button type="button" class="filter-option" role="option" data-value="Leasehold">Leasehold</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Center Emerald Stats Callout -->
+            <div class="stats-bubble-wrap" aria-live="polite">
+              <div class="stat-bubble">
+                <span class="stat-bubble-value" id="statListingsCount">18</span>
+                <span class="stat-bubble-label">Active Units</span>
+              </div>
+              <div class="stat-bubble stat-bubble-center">
+                <span class="stat-bubble-value" id="statMedianPrice">RM 2.85M</span>
+                <span class="stat-bubble-label">Est. Property Value</span>
+              </div>
+              <div class="stat-bubble stat-bubble-last">
+                <span class="stat-bubble-value" id="statAvgAge">4Y</span>
+                <span class="stat-bubble-label">Average Age</span>
+              </div>
+              <span class="stats-pointer" aria-hidden="true"></span>
+            </div>
+
+            <!-- Interactive Map Markers -->
+            <button
+              type="button"
+              class="map-pin-btn map-pin-klcc"
+              data-select-area="KLCC"
+              aria-label="Focus KLCC metrics"
+            >
+              <span class="pin-pulse" aria-hidden="true"></span>
+              <span class="pin-dot" aria-hidden="true"></span>
+              <span class="pin-tag">KLCC</span>
+            </button>
+
+            <button
+              type="button"
+              class="map-pin-btn map-pin-bb"
+              data-select-area="Bukit Bintang"
+              aria-label="Focus Bukit Bintang metrics"
+            >
+              <span class="pin-dot" aria-hidden="true"></span>
+              <span class="pin-tag">Bukit Bintang</span>
+            </button>
+
+            <button
+              type="button"
+              class="map-pin-btn map-pin-mk"
+              data-select-area="Mont Kiara"
+              aria-label="Focus Mont Kiara metrics"
+            >
+              <span class="pin-dot" aria-hidden="true"></span>
+              <span class="pin-tag">Mont Kiara</span>
+            </button>
+
+            <span class="map-district-watermark" id="mapWatermark" aria-hidden="true">KLCC</span>
+
+            <a
+              class="map-help-btn"
+              href="#contact"
+              aria-label="Ask BK Han a question"
+              title="Ask BK Han"
+            >
+              <svg
+                aria-hidden="true"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M9 9.5a3 2.5 0 0 1 6 0c0 2-2 2-3 3.5" />
+                <path d="M12 17h.01" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Bottom 3-Column Bento Widgets -->
+          <div class="bento-grid">
+            <!-- Location Details Card -->
+            <article class="card-location">
+              <div>
+                <div class="card-header-row">
+                  <h2 class="card-title">Location</h2>
+                  <button
+                    type="button"
+                    class="heart-btn"
+                    id="favoriteLocationBtn"
+                    aria-pressed="true"
+                    aria-label="Save KLCC location to shortlist"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" />
+                    </svg>
+                  </button>
+                </div>
+                <p class="location-address" id="locationAddress">
+                  Jalan Binjai, KLCC, 50450 Kuala Lumpur
+                </p>
+                <div class="location-meta">
+                  <span id="locationUnits">KL-01, KL-04, KL-09</span>
+                  <span>Updated Nov 2026</span>
+                </div>
+              </div>
+
+              <div class="mini-stats-grid">
+                <div class="mini-stat-tile">
+                  <span class="mini-stat-icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M8 2v3" /><path d="M16 2v3" /><rect width="18" height="18" x="3" y="3" rx="2" /><path d="M3 9h18" />
+                    </svg>
+                  </span>
+                  <div>
+                    <p class="mini-stat-label">Building Age</p>
+                    <p class="mini-stat-value" id="miniStatAge">4Y</p>
+                  </div>
+                </div>
+
+                <div class="mini-stat-tile">
+                  <span class="mini-stat-icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                  </span>
+                  <div>
+                    <p class="mini-stat-label">Monthly Views</p>
+                    <p class="mini-stat-value" id="miniStatViews">1,420</p>
+                  </div>
+                </div>
+
+                <div class="mini-stat-tile">
+                  <span class="mini-stat-icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z" />
+                    </svg>
+                  </span>
+                  <div>
+                    <p class="mini-stat-label">KL Climate</p>
+                    <p class="mini-stat-value" id="miniStatTemp">28°C</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Property Spotlight Image Card -->
+            <div class="card-photo">
+              <img
+                id="spotlightImg"
+                src="./assets/images/property-interior.jpg"
+                alt="Sunlit KLCC luxury condominium living room with skyline windows"
+                width="1600"
+                height="1067"
+              />
+              <div class="photo-badge">
+                <span id="spotlightTitle">Binjai Residence</span>
+                <span id="spotlightPrice">RM 3.28M</span>
+              </div>
+            </div>
+
+            <!-- Tenants & Community Gauge Card -->
+            <article class="card-tenants">
+              <div>
+                <div class="card-header-row">
+                  <h2 class="card-title">Tenants &amp; Buyers</h2>
+                  <div class="avatar-stack" aria-label="Active client profiles">
+                    <img src="./assets/images/avatar-1.jpg" alt="Kuala Lumpur tenant profile 1" width="100" height="100" />
+                    <img src="./assets/images/avatar-2.jpg" alt="Kuala Lumpur investor profile 2" width="100" height="100" />
+                    <img src="./assets/images/avatar-3.jpg" alt="Kuala Lumpur buyer profile 3" width="100" height="100" />
+                  </div>
+                </div>
+                <p class="tenants-desc">
+                  Growing network of expat tenants, homeowners, and KLCC investors.
+                </p>
+              </div>
+
+              <div class="gauge-wrap">
+                <svg class="gauge-svg" viewBox="0 0 100 54" aria-hidden="true">
+                  <path
+                    d="M 10 48 A 40 40 0 0 1 90 48"
+                    fill="none"
+                    stroke="#f3f4f6"
+                    stroke-width="10"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M 10 48 A 40 40 0 0 1 75 23"
+                    fill="none"
+                    stroke="#f59e0b"
+                    stroke-width="10"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                <div class="gauge-readout">
+                  <div class="gauge-number">2,4k</div>
+                  <div class="gauge-caption">active members</div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Featured KL Listings Section -->
+        <section class="section-block" id="listings" aria-labelledby="listingsHeading">
+          <div class="section-header">
+            <div>
+              <p class="section-eyebrow">Curated Portfolio</p>
+              <h2 class="section-heading" id="listingsHeading">Featured Kuala Lumpur Residences</h2>
+              <p class="section-subtext">
+                Select an area to compare sample RM pricing across KLCC, Bukit Bintang, and Mont Kiara.
+              </p>
+            </div>
+            <div class="area-tabs" role="group" aria-label="Filter listings by neighbourhood">
+              <button type="button" class="area-tab" data-area-tab="All" aria-pressed="true">All Areas</button>
+              <button type="button" class="area-tab" data-area-tab="KLCC" aria-pressed="false">KLCC</button>
+              <button type="button" class="area-tab" data-area-tab="Bukit Bintang" aria-pressed="false">Bukit Bintang</button>
+              <button type="button" class="area-tab" data-area-tab="Mont Kiara" aria-pressed="false">Mont Kiara</button>
+            </div>
+          </div>
+
+          <div class="listings-grid" id="listingsGrid">
+            <article class="listing-card" data-area="KLCC" data-type="Condominium" data-tenure="Freehold">
+              <div class="listing-media">
+                <img
+                  src="./assets/images/property-interior.jpg"
+                  alt="Bright living room inside The Binjai Sky Residence in KLCC"
+                  width="1600"
+                  height="1067"
+                />
+                <span class="listing-tag">KLCC • Freehold</span>
+              </div>
+              <div class="listing-body">
+                <p class="listing-price">RM 3,280,000</p>
+                <h3 class="listing-name">The Binjai Sky Residence</h3>
+                <p class="listing-addr">Jalan Binjai, KLCC, 50450 Kuala Lumpur</p>
+                <p class="listing-specs">2,150 sq ft • 3 Beds • 3 Baths • Condominium</p>
+                <div class="listing-cta">
+                  <button type="button" class="btn-secondary request-viewing-btn" data-property="The Binjai Sky Residence (KLCC)">
+                    Request Viewing
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="listing-card" data-area="Bukit Bintang" data-type="Serviced Suite" data-tenure="Freehold">
+              <div class="listing-media">
+                <img
+                  src="./assets/images/listing-bukit-bintang.jpg"
+                  alt="Contemporary architectural residence terrace in Bukit Bintang"
+                  width="1200"
+                  height="800"
+                />
+                <span class="listing-tag">Bukit Bintang • Freehold</span>
+              </div>
+              <div class="listing-body">
+                <p class="listing-price">RM 1,950,000</p>
+                <h3 class="listing-name">Pavilion Crest Suite</h3>
+                <p class="listing-addr">Jalan Bukit Bintang, 55100 Kuala Lumpur</p>
+                <p class="listing-specs">1,420 sq ft • 2+1 Beds • 2 Baths • Serviced Suite</p>
+                <div class="listing-cta">
+                  <button type="button" class="btn-secondary request-viewing-btn" data-property="Pavilion Crest Suite (Bukit Bintang)">
+                    Request Viewing
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="listing-card" data-area="Mont Kiara" data-type="Penthouse" data-tenure="Freehold">
+              <div class="listing-media">
+                <img
+                  src="./assets/images/listing-mont-kiara.jpg"
+                  alt="Open-plan living and kitchen space at Kiara Courtyard Penthouse in Mont Kiara"
+                  width="1200"
+                  height="800"
+                />
+                <span class="listing-tag">Mont Kiara • Freehold</span>
+              </div>
+              <div class="listing-body">
+                <p class="listing-price">RM 2,420,000</p>
+                <h3 class="listing-name">Kiara Courtyard Penthouse</h3>
+                <p class="listing-addr">Jalan Kiara 3, Mont Kiara, 50480 Kuala Lumpur</p>
+                <p class="listing-specs">1,880 sq ft • 3+1 Beds • 3 Baths • Penthouse</p>
+                <div class="listing-cta">
+                  <button type="button" class="btn-secondary request-viewing-btn" data-property="Kiara Courtyard Penthouse (Mont Kiara)">
+                    Request Viewing
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- KL Market Pulse & AEO Section -->
+        <section class="section-block" id="analytics" aria-labelledby="analyticsHeading">
+          <div class="section-header">
+            <div>
+              <p class="section-eyebrow">Market Intelligence</p>
+              <h2 class="section-heading" id="analyticsHeading">Kuala Lumpur Neighbourhood Pulse</h2>
+              <p class="section-subtext">
+                Indicative sample benchmarks across prime Kuala Lumpur residential enclaves.
+              </p>
+            </div>
+          </div>
+
+          <div class="analytics-grid">
+            <div class="pulse-table-wrap">
+              <table class="pulse-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Neighbourhood</th>
+                    <th scope="col">Sample Median</th>
+                    <th scope="col">Est. PSF</th>
+                    <th scope="col">Gross Yield</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>KLCC</strong></td>
+                    <td>RM 2,850,000</td>
+                    <td>RM 1,450 psf</td>
+                    <td>4.6%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bukit Bintang</strong></td>
+                    <td>RM 1,950,000</td>
+                    <td>RM 1,320 psf</td>
+                    <td>5.1%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Mont Kiara</strong></td>
+                    <td>RM 2,180,000</td>
+                    <td>RM 980 psf</td>
+                    <td>4.8%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="aeo-box">
+              <div class="aeo-item">
+                <h3>Who is BK REALTOR?</h3>
+                <p>
+                  BK REALTOR is a KLCC-based property advisory led by BK Han, helping buyers, landlords, and expat tenants evaluate prime Kuala Lumpur homes.
+                </p>
+              </div>
+              <div class="aeo-item">
+                <h3>Which neighbourhoods does BK Han focus on?</h3>
+                <p>
+                  Core coverage spans KLCC, Bukit Bintang, and Mont Kiara, with private viewings arranged across central Kuala Lumpur.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact BK Han Section -->
+        <section class="section-block" id="contact" aria-labelledby="contactHeading">
+          <div class="section-header">
+            <div>
+              <p class="section-eyebrow">Private Consultation</p>
+              <h2 class="section-heading" id="contactHeading">Connect with BK Han</h2>
+              <p class="section-subtext">
+                Arrange a property walkthrough or request an updated RM valuation report.
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-grid">
+            <div class="agent-card">
+              <div class="agent-id">
+                <span class="agent-monogram" aria-hidden="true">BK</span>
+                <div>
+                  <h3 style="margin: 0; font-size: 1.0625rem;">BK Han</h3>
+                  <p style="margin: 0.15rem 0 0; font-size: 0.875rem; color: var(--text-secondary);">
+                    Principal Realtor • BK REALTOR
+                  </p>
+                </div>
+              </div>
+              <ul class="agent-list">
+                <li><strong>Base:</strong> KLCC Area, 50450 Kuala Lumpur, Malaysia</li>
+                <li><strong>Email:</strong> <a href="mailto:hello@bkrealtor.example">hello@bkrealtor.example</a></li>
+                <li><strong>Office Line:</strong> +60 3-2100 0000</li>
+                <li><strong>Viewing Hours:</strong> Daily, 9:30 AM – 6:30 PM MYT</li>
+              </ul>
+            </div>
+
+            <form class="contact-form" id="enquiryForm" novalidate>
+              <div class="form-field">
+                <label class="form-label" for="visitorName">Your Name</label>
+                <input class="form-input" id="visitorName" name="name" type="text" placeholder="Aiman Razak" required />
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="visitorEmail">Email Address</label>
+                <input class="form-input" id="visitorEmail" name="email" type="email" placeholder="name@example.com" required />
+              </div>
+              <div class="form-field form-field-full">
+                <label class="form-label" for="enquiryArea">Interested Area or Property</label>
+                <input
+                  class="form-input"
+                  id="enquiryArea"
+                  name="property"
+                  type="text"
+                  value="The Binjai Sky Residence (KLCC)"
+                />
+              </div>
+              <div class="form-field form-field-full">
+                <label class="form-label" for="visitorMessage">Preferred Viewing Date or Notes</label>
+                <textarea
+                  class="form-input"
+                  id="visitorMessage"
+                  name="message"
+                  rows="3"
+                  placeholder="Share your preferred viewing time or budget range in RM."
+                ></textarea>
+              </div>
+              <div class="form-field form-field-full">
+                <button type="submit" class="btn-primary">Send Demo Enquiry</button>
+              </div>
+              <p class="form-status" id="enquiryStatus" role="status" aria-live="polite" hidden></p>
+            </form>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+          <div>
+            <strong>BK REALTOR</strong> • Owner: BK Han • KLCC, Kuala Lumpur
+          </div>
+          <nav class="footer-links" aria-label="Footer navigation">
+            <a href="#overview">Overview</a>
+            <a href="#listings">Listings</a>
+            <a href="#analytics">Market Pulse</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <p class="footer-demo-note">Demo site: listings and figures are sample data.</p>
+        </footer>
+      </main>
+    </div>
+
+    <!-- Add Property Demo Modal -->
+    <div
+      class="modal-backdrop"
+      id="addPropertyModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+      hidden
+    >
+      <div class="modal-panel">
+        <div class="modal-header">
+          <div style="display: flex; align-items: center; gap: 0.875rem;">
+            <div class="modal-icon-box" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18" />
+                <path d="M5 21V7l8-4 8 4v14" />
+                <path d="M17 21v-8H7v8" />
+              </svg>
+            </div>
+            <div>
+              <h2 id="modalTitle" style="margin: 0; font-size: 1.25rem; font-weight: 600;">Add Sample Property</h2>
+              <p style="margin: 0.2rem 0 0; font-size: 0.875rem; color: var(--text-secondary);">
+                Preview adding a Kuala Lumpur listing to the demo grid.
+              </p>
+            </div>
+          </div>
+          <button type="button" class="modal-close" id="closeAddModalBtn" aria-label="Close modal">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <form class="contact-form" id="addPropertyForm">
+          <div class="form-field form-field-full">
+            <label class="form-label" for="newPropName">Property Name</label>
+            <input class="form-input" id="newPropName" type="text" placeholder="e.g. Four Seasons Place Residence" required />
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="newPropPrice">Asking Price (RM)</label>
+            <input class="form-input" id="newPropPrice" type="text" placeholder="RM 2,650,000" required />
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="newPropArea">Area</label>
+            <select class="form-input" id="newPropArea">
+              <option value="KLCC">KLCC</option>
+              <option value="Bukit Bintang">Bukit Bintang</option>
+              <option value="Mont Kiara">Mont Kiara</option>
+            </select>
+          </div>
+          <div class="form-field form-field-full">
+            <label class="form-label" for="newPropAddress">Address</label>
+            <input class="form-input" id="newPropAddress" type="text" placeholder="Jalan Ampang, KLCC, 50450 Kuala Lumpur" required />
+          </div>
+          <div class="form-field">
+            <button type="button" class="btn-secondary" id="cancelAddModalBtn">Cancel</button>
+          </div>
+          <div class="form-field">
+            <button type="submit" class="btn-primary">Add to Demo Grid</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
