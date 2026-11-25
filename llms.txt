@@ -12,6 +12,7 @@
 
 ## Sections
 - Overview (#overview): Interactive neighbourhood map filter, RM valuation callout, location details, and community gauge.
+- Meet BK Han (#meet): Portrait and introduction to principal realtor BK Han.
 - Featured Listings (#listings): Sample Kuala Lumpur condominiums, serviced suites, and penthouses across KLCC, Bukit Bintang, and Mont Kiara.
 - Market Pulse (#analytics): Indicative sample median prices, PSF, and gross yields by Kuala Lumpur neighbourhood, plus agency Q&A.
-- Contact (#contact): Principal realtor details for BK Han and a demo viewing enquiry form.
+- Contact (#contact): Principal realtor details for BK Han, café portrait, and a demo viewing enquiry form.

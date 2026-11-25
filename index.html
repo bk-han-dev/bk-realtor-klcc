@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%230b875b%27/%3E%3Ccircle cx=%2711%27 cy=%2711%27 r=%273.2%27 fill=%27%23fff%27/%3E%3Ccircle cx=%2721%27 cy=%2711%27 r=%273.2%27 fill=%27%23fff%27/%3E%3Ccircle cx=%2711%27 cy=%2721%27 r=%273.2%27 fill=%27%23fff%27/%3E%3Ccircle cx=%2721%27 cy=%2721%27 r=%273.2%27 fill=%27%23fff%27/%3E%3C/svg%3E" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="./assets/favicon-48.png" />
+    <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png" />
     <title>BK REALTOR | KLCC &amp; Kuala Lumpur Property Analytics</title>
     <meta
       name="description"
@@ -31,9 +33,13 @@
             "@type": "RealEstateAgent",
             "@id": "#bk-realtor",
             "name": "BK REALTOR",
+            "logo": "https://bk-han-dev.github.io/bk-realtor-klcc/assets/logo-bk-realtor-full.png",
+            "image": "https://bk-han-dev.github.io/bk-realtor-klcc/assets/images/bk-han-portrait.jpg",
             "founder": {
               "@type": "Person",
-              "name": "BK Han"
+              "name": "BK Han",
+              "image": "https://bk-han-dev.github.io/bk-realtor-klcc/assets/images/bk-han-cafe.jpg",
+              "jobTitle": "Principal Realtor"
             },
             "areaServed": [
               "KLCC, Kuala Lumpur",
@@ -83,10 +89,13 @@
       <aside class="sidebar" aria-label="Primary navigation">
         <div class="sidebar-top">
           <a class="brand-mark" href="#overview" aria-label="BK REALTOR home">
-            <div class="brand-dots" aria-hidden="true">
-              <span></span><span></span><span></span><span></span>
-            </div>
-            <span class="brand-short">BK</span>
+            <img
+              class="brand-logo"
+              src="./assets/logo-bk-realtor-icon.png"
+              alt=""
+              width="512"
+              height="512"
+            />
           </a>
 
           <nav class="nav-stack" aria-label="Dashboard sections">
@@ -250,7 +259,12 @@
             title="BK Han — BK REALTOR"
             aria-label="Contact BK Han, Principal Realtor"
           >
-            BK
+            <img
+              src="./assets/images/bk-han-avatar.jpg"
+              alt="BK Han, principal realtor, BK REALTOR KLCC"
+              width="256"
+              height="256"
+            />
           </a>
         </div>
       </aside>
@@ -260,8 +274,19 @@
         <!-- Brand Header Strip -->
         <header class="topbar-meta">
           <div class="topbar-brand">
-            <h1 class="topbar-title">BK REALTOR</h1>
-            <span class="topbar-location">KLCC, Kuala Lumpur • BK Han</span>
+            <a href="#overview" class="topbar-logo-link" aria-label="BK REALTOR home">
+              <img
+                class="topbar-logo"
+                src="./assets/logo-bk-realtor-icon.png"
+                alt=""
+                width="512"
+                height="512"
+              />
+            </a>
+            <div class="topbar-wordmark">
+              <h1 class="topbar-title">BK REALTOR</h1>
+              <span class="topbar-location">KLCC, Kuala Lumpur • BK Han</span>
+            </div>
           </div>
           <div class="topbar-actions">
             <a class="pill-link" href="#listings">Listings</a>
@@ -637,6 +662,31 @@
           </div>
         </section>
 
+        <!-- Meet BK Han -->
+        <section class="section-block meet-section" id="meet" aria-labelledby="meetHeading">
+          <div class="meet-grid">
+            <figure class="meet-photo">
+              <img
+                src="./assets/images/bk-han-portrait.jpg"
+                alt="BK Han, principal realtor, BK REALTOR KLCC"
+                width="720"
+                height="1280"
+              />
+            </figure>
+            <div class="meet-copy">
+              <p class="section-eyebrow">Principal Realtor</p>
+              <h2 class="section-heading" id="meetHeading">Meet BK Han</h2>
+              <p class="meet-lead">
+                BK Han leads BK REALTOR from the KLCC area of Kuala Lumpur, advising buyers, landlords, and expat tenants on prime residences across KLCC, Bukit Bintang, and Mont Kiara.
+              </p>
+              <p class="meet-body">
+                Private viewings are arranged around central Kuala Lumpur, with sample RM valuations prepared for shortlisted homes.
+              </p>
+              <a class="pill-link pill-link-primary meet-cta" href="#contact">Connect with BK Han</a>
+            </div>
+          </div>
+        </section>
+
         <!-- Featured KL Listings Section -->
         <section class="section-block" id="listings" aria-labelledby="listingsHeading">
           <div class="section-header">
@@ -804,13 +854,17 @@
 
           <div class="contact-grid">
             <div class="agent-card">
+              <img
+                class="agent-photo"
+                src="./assets/images/bk-han-cafe.jpg"
+                alt="BK Han, principal realtor, BK REALTOR KLCC"
+                width="800"
+                height="800"
+              />
               <div class="agent-id">
-                <span class="agent-monogram" aria-hidden="true">BK</span>
                 <div>
-                  <h3 style="margin: 0; font-size: 1.0625rem;">BK Han</h3>
-                  <p style="margin: 0.15rem 0 0; font-size: 0.875rem; color: var(--text-secondary);">
-                    Principal Realtor • BK REALTOR
-                  </p>
+                  <h3 class="agent-name">BK Han</h3>
+                  <p class="agent-role">Principal Realtor • BK REALTOR</p>
                 </div>
               </div>
               <ul class="agent-list">
@@ -860,16 +914,26 @@
 
         <!-- Footer -->
         <footer class="site-footer">
-          <div>
-            <strong>BK REALTOR</strong> • Owner: BK Han • KLCC, Kuala Lumpur
+          <a class="footer-brand" href="#overview">
+            <img
+              class="footer-logo"
+              src="./assets/logo-bk-realtor-full.png"
+              alt="BK REALTOR, KLCC · Kuala Lumpur"
+              width="640"
+              height="766"
+            />
+          </a>
+          <div class="footer-meta">
+            <p class="footer-credit">Owner: BK Han • KLCC, Kuala Lumpur</p>
+            <nav class="footer-links" aria-label="Footer navigation">
+              <a href="#overview">Overview</a>
+              <a href="#meet">Meet BK Han</a>
+              <a href="#listings">Listings</a>
+              <a href="#analytics">Market Pulse</a>
+              <a href="#contact">Contact</a>
+            </nav>
+            <p class="footer-demo-note">Demo site: listings and figures are sample data.</p>
           </div>
-          <nav class="footer-links" aria-label="Footer navigation">
-            <a href="#overview">Overview</a>
-            <a href="#listings">Listings</a>
-            <a href="#analytics">Market Pulse</a>
-            <a href="#contact">Contact</a>
-          </nav>
-          <p class="footer-demo-note">Demo site: listings and figures are sample data.</p>
         </footer>
       </main>
     </div>
